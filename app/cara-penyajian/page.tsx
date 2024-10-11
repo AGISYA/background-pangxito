@@ -52,15 +52,15 @@ export default function Carapenyajian() {
             {[
               {
                 name: "Pangxito Goreng",
-                image: "/images/PangxitoGoreng.jpeg",
+                image: "/images/goreng.png",
               },
               {
                 name: "Pangxito Rebus",
-                image: "/images/PangxitoRebus.jpeg",
+                image: "/images/rebus.png",
               },
               {
                 name: "Pangxito Kuah",
-                image: "/images/PangxitoKuah.jpeg",
+                image: "/images/kuah.png",
               },
             ].map((product, index) => (
               <div
