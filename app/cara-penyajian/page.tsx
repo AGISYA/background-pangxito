@@ -10,7 +10,7 @@ export default function Carapenyajian() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex items-center justify-center">
             <Image
-              src="/images/PangxitoGoreng.jpeg"
+              src="/images/goreng.png"
               alt="Pangxito"
               width={500}
               height={500}
