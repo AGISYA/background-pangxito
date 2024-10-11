@@ -10,7 +10,7 @@ export default function Carapenyajian() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex items-center justify-center">
             <Image
-              src="/images/pangxito06.png"
+              src="/images/PangxitoGoreng.jpeg"
               alt="Pangxito"
               width={500}
               height={500}
@@ -52,15 +52,15 @@ export default function Carapenyajian() {
             {[
               {
                 name: "Pangxito Goreng",
-                image: "/images/pangxito05.png",
+                image: "/images/PangxitoGoreng.jpeg",
               },
               {
                 name: "Pangxito Rebus",
-                image: "/images/pangxito06.png",
+                image: "/images/PangxitoRebus.jpeg",
               },
               {
                 name: "Pangxito Kuah",
-                image: "/images/pangxito05.png",
+                image: "/images/PangxitoKuah.jpeg",
               },
             ].map((product, index) => (
               <div
