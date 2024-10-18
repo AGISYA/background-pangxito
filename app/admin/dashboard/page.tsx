@@ -1,30 +1,12 @@
-'use client';
-
-import React, { useState } from 'react';
-import Image from 'next/image';
+"use client";
+import React, { useState } from "react";
+import Image from "next/image";
 
 export default function Dashboard() {
-  const [title, setTitle] = useState('PANGXITO');
-  const [description, setDescription] = useState(
-    'Pangsit Tulang Rangu 3 in 1 bisa digoreng, direbus, dan dikukus'
-  );
-  const [selectedImage, setSelectedImage] = useState<string>('/images/1.jpg');
-
-  const [customerName, setCustomerName] = useState('');
-  const [customerFeedback, setCustomerFeedback] = useState(
-    'Pangsit yang lezat, benar-benar membuat saya terkesan!'
-  );
-
-  const [datahero, setDataHero] = useState({
-    image: 'title',
-    description1: {
-      title: '',
-      description: '',
-    },
-    description2: {
-      name_customer: '',
-      description: '',
-    },
+  const [selectedImage, setSelectedImage] = useState<string>("/images/1.jpg");
+  const [dataHero, setDataHero] = useState({
+    description1: { title: "", description: "" },
+    description2: { name_customer: "", feedback: "" },
   });
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +14,7 @@ export default function Dashboard() {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        if (reader.result && typeof reader.result === 'string') {
+        if (reader.result && typeof reader.result === "string") {
           setSelectedImage(reader.result);
         }
       };
@@ -40,119 +22,90 @@ export default function Dashboard() {
     }
   };
 
-  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-
-    setDataHero((prevState) => ({
-      ...prevState,
-      description1: {
-        ...prevState.description1,
-        title: value,
-      },
-    }));
-  };
-
-  const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-
-    setDataHero((prevState) => ({
-      ...prevState,
-      description1: {
-        ...prevState.description1,
-        description: value,
-      },
-    }));
-
-    console.log('cek data hero');
-    console.log(datahero);
-  };
-
-  const handleCustomerNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCustomerName(e.target.value);
-  };
-
-  // Save to local storage
-
-  // Get data hero
-  // datahero = localStorage.getItem('hero') || undefined;
+  const handleChange =
+    (
+      field: "description1" | "description2",
+      subfield: "title" | "description" | "name_customer" | "feedback"
+    ) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setDataHero((prevState) => ({
+        ...prevState,
+        [field]: {
+          ...prevState[field],
+          [subfield]: e.target.value,
+        },
+      }));
+    };
 
   const saveToLocalStorage = () => {
-    const stringifiedData = JSON.stringify(datahero);
-
-    console.log(stringifiedData);
-
-    localStorage.setItem('hero', stringifiedData);
+    localStorage.setItem("testimoni", JSON.stringify(dataHero));
   };
 
   return (
-    <div className='bg-white flex flex-col p-4'>
+    <div className="bg-white flex flex-col p-4">
       <Image
         src={selectedImage}
-        alt='Gambar'
+        alt="Gambar"
         width={400}
         height={300}
-        className='mb-6'
+        className="mb-6"
       />
-      <div className='mb-4'>
-        <label className='block mb-2'>Ubah Gambar:</label>
-        <input type='file' onChange={handleImageChange} />
+      <div className="mb-4">
+        <label className="block mb-2">Ubah Gambar:</label>
+        <input type="file" onChange={handleImageChange} />
       </div>
-      {/* Deskripsi 1 */}
-      <div>
-        <div className='text-2xl font-semibold mt-10'>Deskripsi 1</div>
-        <div className='bg-white p-6 rounded-lg shadow-md border border-gray-200'>
-          <h2 className='text-xl font-bold text-gray-800 mb-4'>Edit Title</h2>
-          <input
-            type='text'
-            value={datahero.description1.title}
-            onChange={handleTitleChange}
-            className='w-full p-3 mb-4 border border-gray-300 rounded-lg'
-            placeholder='Enter new title'
-          />
 
-          <h2 className='text-xl font-bold text-gray-800 mb-4'>
-            Edit Deskripsi
-          </h2>
+      <section>
+        <h2 className="text-2xl font-semibold mt-10">Deskripsi 1</h2>
+        <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
           <input
-            type='text'
-            value={datahero.description1.description}
-            onChange={handleDescriptionChange}
-            className='w-full p-3 mb-4 border border-gray-300 rounded-lg'
-            placeholder='Enter new description'
+            type="text"
+            value={dataHero.description1.title}
+            onChange={handleChange("description1", "title")}
+            className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
+            placeholder="Masukkan judul baru"
           />
-          <div
-            onClick={() => {
-              saveToLocalStorage();
-            }}
-            className='w-28 mx-auto text-center text-white bg-green-500 hover:bg-green-600 py-2 rounded-lg'
+          <input
+            type="text"
+            value={dataHero.description1.description}
+            onChange={handleChange("description1", "description")}
+            className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
+            placeholder="Masukkan deskripsi baru"
+          />
+          <button
+            onClick={saveToLocalStorage}
+            className="w-full bg-green-500 text-white py-2 rounded-lg"
           >
             UPDATE
-          </div>
+          </button>
         </div>
-      </div>
-      {/* Deskripsi 2 */}
-      <div className='text-2xl font-semibold mt-10'>Deskripsi 2</div>
-      <div className='bg-white p-6 rounded-lg shadow-md border border-gray-200'>
-        <h2 className='text-xl font-bold text-gray-800 mb-4'>Nama Customer</h2>
-        <input
-          type='text'
-          value={customerName}
-          onChange={handleCustomerNameChange}
-          className='w-full p-3 mb-4 border border-gray-300 rounded-lg'
-          placeholder='Enter customer name'
-        />
+      </section>
 
-        <h2 className='text-xl font-bold text-gray-800 mb-4'>Deskripsi</h2>
-        <input
-          type='text'
-          value={customerFeedback}
-          onChange={(e) => setCustomerFeedback(e.target.value)}
-          className='w-full p-3 mb-4 border border-gray-300 rounded-lg'
-        />
-        <div className='w-28 mx-auto text-center text-white bg-green-500 hover:bg-green-600 py-2 rounded-lg'>
-          UPDATE
+      <section>
+        <h2 className="text-2xl font-semibold mt-10">Deskripsi 2</h2>
+        <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+          <input
+            type="text"
+            value={dataHero.description2.name_customer}
+            onChange={handleChange("description2", "name_customer")}
+            className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
+            placeholder="Nama Customer"
+          />
+          <input
+            type="text"
+            value={dataHero.description2.feedback}
+            onChange={handleChange("description2", "feedback")}
+            className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
+            placeholder="Deskripsi"
+          />
+          <button
+            onClick={saveToLocalStorage}
+            className="w-full bg-green-500 text-white py-2 rounded-lg"
+          >
+            UPDATE
+          </button>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
