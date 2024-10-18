@@ -1,22 +1,26 @@
-import React from "react";
+import HeaderAdmin from "./header";
+import SidebarAdmin from "./sidebar";
 
-export default function HeaderAdmin() {
+export default function LayoutAdmin({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <div className="bg-red-500 flex items-center justify-end h-14 sticky top-0 z-50">
-      <nav className="mr-4">
-        <ul className="flex space-x-4">
-          <li>
-            <a href="#" className="text-white ">
-              Admin
-            </a>
-          </li>
-          <li>
-            <a href="#" className="text-white ">
-              Logout
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <html lang="en">
+      <body className={` antialiased`}>
+        <div className="flex h-screen w-screen text-black">
+          <SidebarAdmin />
+          <div className="h-screen w-full">
+            <div className="S flex-1 h-full overflow-auto sticky">
+              <HeaderAdmin />
+              {children}
+            </div>
+            {/* <HeaderAdmin />
+            {children} */}
+          </div>
+        </div>
+      </body>
+    </html>
   );
 }
