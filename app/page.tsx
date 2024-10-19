@@ -27,6 +27,8 @@ const Home = () => {
     const checkExistData = localStorage.getItem("testimoni") || "";
     if (checkExistData !== "") {
       setHero(JSON.parse(checkExistData));
+
+      console.log(JSON.parse(checkExistData));
     }
   }, []);
 
@@ -36,7 +38,8 @@ const Home = () => {
       <div className="relative flex items-center justify-center h-screen p-6">
         <Image
           alt="A delicious pangsit goreng dish with spices"
-          src="/images/2.jpg"
+          // src="/images/2.jpg"
+          src={`${hero ? hero.image : `/images/2.jpg`} `}
           width="5000"
           height="5000"
           className="absolute top-0 left-0 w-full h-full object-cover bg-center z-10"

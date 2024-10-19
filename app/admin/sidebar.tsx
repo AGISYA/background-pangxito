@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function SidebarAdmin() {
   return (
@@ -32,24 +33,24 @@ export default function SidebarAdmin() {
             </a>
           </li>
           <li>
-            <a
-              href="#"
+            <Link
+              href="/admin/hero"
               className="block py-2 px-4 rounded hover:bg-gray-200 transition"
             >
               Hero
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="#"
+            <Link
+              href="/admin/OurProduct"
               className="block py-2 px-4 rounded hover:bg-gray-200 transition"
             >
               Our Product
-            </a>
+            </Link>
           </li>
           <li>
             <a
-              href="#"
+              href="/admin/keunggulan"
               className="block py-2 px-4 rounded hover:bg-gray-200 transition"
             >
               Keunggulan
@@ -57,7 +58,7 @@ export default function SidebarAdmin() {
           </li>
           <li>
             <a
-              href="#"
+              href="/admin/deskripsi"
               className="block py-2 px-4 rounded hover:bg-gray-200 transition"
             >
               Deskripsi
