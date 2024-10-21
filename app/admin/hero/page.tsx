@@ -41,6 +41,7 @@ export default function Dashboard() {
 
   const saveToLocalStorage = () => {
     localStorage.setItem("testimoni", JSON.stringify(dataHero));
+    console.log(dataHero);
   };
 
   return (

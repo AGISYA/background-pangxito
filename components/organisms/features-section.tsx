@@ -6,7 +6,6 @@ const FeaturesSection = () => {
 
   useEffect(() => {
     const checkExistData = localStorage.getItem("adventages") || "";
-    // console.log("checkExistData", checkExistData);
     if (checkExistData !== "") {
       setDataAdventages(JSON.parse(checkExistData));
     }

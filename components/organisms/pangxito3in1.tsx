@@ -2,10 +2,21 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 
 const Pangxito3in1: React.FC = () => {
+  const [DeskripsiPangxito, setDataDeskripsiPangxito] = useState<any>();
+
+  useEffect(() => {
+    const checkExistData = localStorage.getItem("DeskripsiPangxito") || "";
+    if (checkExistData !== "") {
+      setDataDeskripsiPangxito(JSON.stringify(checkExistData));
+
+      console.log(JSON.stringify(checkExistData));
+    }
+  }, []);
+
   return (
     <div className="container mx-auto py-10 bg-white">
       <div className="flex flex-col md:flex-row justify-center items-start">
@@ -20,7 +31,9 @@ const Pangxito3in1: React.FC = () => {
         </div>
         <div className="w-full md:w-1/2 px-6">
           <h1 className="text-3xl font-bold text-red-600 mb-8 text-center md:text-left">
-            Pangxito 3in1
+            {DeskripsiPangxito
+              ? DeskripsiPangxito.DeskripsiPangxito2.maintitle
+              : "Pangxito 3in1"}
           </h1>
 
           <div className="space-y-6">
@@ -28,10 +41,14 @@ const Pangxito3in1: React.FC = () => {
               <FaCheckCircle className="text-[#9370db] text-2xl mr-3" />
               <div>
                 <h5 className="text-xl md:text-xl font-semibold text-red-600 mb-1">
-                  PANGXITO GORENG
+                  {DeskripsiPangxito
+                    ? DeskripsiPangxito.DeskripsiPangxito3.title1
+                    : "PANGXITO GORENG"}
                 </h5>
                 <p className="text-xs md:text-lg text-black leading-relaxed">
-                  Bisa diolah menjadi pangxito goreng dan ditambah dengan saus
+                  {DeskripsiPangxito
+                    ? DeskripsiPangxito.DeskripsiPangxito3.description1
+                    : "Bisa diolah menjadi pangxito goreng dan ditambah dengan saus"}
                 </p>
               </div>
             </div>
@@ -40,10 +57,14 @@ const Pangxito3in1: React.FC = () => {
               <FaCheckCircle className="text-[#9370db] text-2xl mr-3" />
               <div>
                 <h5 className="text-xl md:text-xl font-semibold text-red-600 mb-1">
-                  PANGXITO REBUS
+                  {DeskripsiPangxito
+                    ? DeskripsiPangxito.DeskripsiPangxito4.title2
+                    : "PANGXITO REBUS"}
                 </h5>
                 <p className="text-xs md:text-lg text-black leading-relaxed">
-                  Cocok juga dijadikan pangsit rebus yang lembut dan kenyal
+                  {DeskripsiPangxito
+                    ? DeskripsiPangxito.DeskripsiPangxito4.description2
+                    : "Cocok juga dijadikan pangsit rebus yang lembut dan kenyal"}
                 </p>
               </div>
             </div>
@@ -52,11 +73,14 @@ const Pangxito3in1: React.FC = () => {
               <FaCheckCircle className="text-[#9370db] text-2xl mr-3" />
               <div>
                 <h5 className="text-xl md:text-xl font-semibold text-red-600 mb-1">
-                  PANGXITO KUAH
+                  {DeskripsiPangxito
+                    ? DeskripsiPangxito.DeskripsiPangxito5.title3
+                    : "PANGXITO KUAH"}
                 </h5>
                 <p className="text-xs md:text-lg text-black leading-relaxed">
-                  Bisa juga dijadikan pangsit kuah dengan bumbu pedas manis
-                  gurih yang bikin ketagihan
+                  {DeskripsiPangxito
+                    ? DeskripsiPangxito.DeskripsiPangxito5.title3
+                    : "Bisa juga dijadikan pangsit kuah dengan bumbu pedas manis gurih yang bikin ketagihan"}
                 </p>
               </div>
             </div>
@@ -64,7 +88,10 @@ const Pangxito3in1: React.FC = () => {
             <div className="flex items-start mx-9">
               <div>
                 <p className="text-xs md:text-lg text-black leading-relaxed">
-                  Mau tahu cara masak Pangxito?
+                  {DeskripsiPangxito
+                    ? DeskripsiPangxito.DeskripsiPangxito5.title3
+                    : "Mau tahu cara masak Pangxito?"}
+
                   <Link
                     href="/cara-penyajian"
                     className="text-xs md:text-sm text-blue-600 hover:underline cursor-pointer"
