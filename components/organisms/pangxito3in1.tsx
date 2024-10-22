@@ -11,9 +11,9 @@ const Pangxito3in1: React.FC = () => {
   useEffect(() => {
     const checkExistData = localStorage.getItem("DeskripsiPangxito") || "";
     if (checkExistData !== "") {
-      setDataDeskripsiPangxito(JSON.stringify(checkExistData));
+      setDataDeskripsiPangxito(JSON.parse(checkExistData));
 
-      console.log(JSON.stringify(checkExistData));
+      console.log(JSON.parse(checkExistData));
     }
   }, []);
 

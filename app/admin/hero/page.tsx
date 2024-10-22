@@ -45,9 +45,9 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="bg-white p-4 space-y-4 w-full h-full flex">
-      <div className="mx-4 mt-4">
-        <h2 className="text-xl font-semibold text-gray-800 mb-3">
+    <div className="bg-gray-50 p-8 min-h-screen flex flex-col">
+      <div className="mx-4 mt-4 mb-6">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-3">
           Image Dashboard
         </h2>
         <Image
@@ -69,57 +69,59 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Deskripsi 1 */}
         <section>
           <h2 className="text-xl font-semibold text-gray-800 mb-3">
             Deskripsi 1
           </h2>
-          <div className="bg-gray-50 p-4 rounded-md shadow-sm border border-gray-200">
+          <div className="bg-white p-4 rounded-md shadow-sm border border-gray-200">
             <input
               type="text"
               value={dataHero.description1.title}
               onChange={handleChange("description1", "title")}
-              className="w-full p-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:border-green-500 text-sm"
+              className="w-full p-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 text-sm"
               placeholder="Masukkan judul baru"
             />
             <input
               type="text"
               value={dataHero.description1.description}
               onChange={handleChange("description1", "description")}
-              className="w-full p-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:border-green-500 text-sm"
+              className="w-full p-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 text-sm"
               placeholder="Masukkan deskripsi baru"
             />
             <button
               onClick={saveToLocalStorage}
-              className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition-colors text-sm"
+              className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors text-sm"
             >
               UPDATE
             </button>
           </div>
         </section>
 
+        {/* Deskripsi 2 */}
         <section>
           <h2 className="text-xl font-semibold text-gray-800 mb-3">
             Deskripsi 2
           </h2>
-          <div className="bg-gray-50 p-4 rounded-md shadow-sm border border-gray-200">
+          <div className="bg-white p-4 rounded-md shadow-sm border border-gray-200">
             <input
               type="text"
               value={dataHero.description2.name_customer}
               onChange={handleChange("description2", "name_customer")}
-              className="w-full p-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:border-green-500 text-sm"
+              className="w-full p-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 text-sm"
               placeholder="Nama Customer"
             />
             <input
               type="text"
               value={dataHero.description2.feedback}
               onChange={handleChange("description2", "feedback")}
-              className="w-full p-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:border-green-500 text-sm"
+              className="w-full p-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 text-sm"
               placeholder="Deskripsi"
             />
             <button
               onClick={saveToLocalStorage}
-              className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition-colors text-sm"
+              className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors text-sm"
             >
               UPDATE
             </button>

@@ -1,6 +1,16 @@
+import { useEffect, useState } from "react";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
+  const [dataFooter, setDataFooter] = useState<any>();
+
+  useEffect(() => {
+    const checkExistData = localStorage.getItem("footer") || "";
+    if (checkExistData !== "") {
+      setDataFooter(JSON.parse(checkExistData));
+    }
+  }, []);
+  console.log(dataFooter);
   return (
     <footer className="bg-red-600 text-white py-10">
       <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-yellow-300 opacity-30"></div>
@@ -8,11 +18,12 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between">
           <div className="mb-6 md:mb-0">
             <h2 className="text-2xl font-bold mb-2 text-yellow-500">
-              Pangxito
+              {dataFooter ? dataFooter.footer.maintitle : "PANGXITO"}
             </h2>
             <div className="text-gray-300 mb-4">
-              Nikmati pangsit lezat setiap hari. Hubungi kami untuk informasi
-              lebih lanjut!
+              {dataFooter
+                ? dataFooter.footer.deskription
+                : "Nikmati pangsit lezat setiap hari. Hubungi kami untuk informasi lebih lanjut!"}
             </div>
           </div>
           <div className="mb-6 md:mb-0">

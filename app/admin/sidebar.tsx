@@ -66,6 +66,22 @@ export default function SidebarAdmin() {
           </li>
           <li>
             <a
+              href="/admin/contactus"
+              className="block py-2 px-4 rounded hover:bg-gray-200 transition"
+            >
+              contak us
+            </a>
+          </li>
+          <li>
+            <a
+              href="/admin/footer"
+              className="block py-2 px-4 rounded hover:bg-gray-200 transition"
+            >
+              footer
+            </a>
+          </li>
+          <li>
+            <a
               href="#"
               className="block py-2 px-4 rounded hover:bg-gray-200 transition"
             >

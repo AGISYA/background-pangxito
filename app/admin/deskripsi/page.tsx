@@ -64,59 +64,69 @@ export default function DeskripsiPangxito() {
   const saveToLocalStorage = () => {
     localStorage.setItem(
       "DeskripsiPangxito",
-      JSON.stringify(DeskripsiPangxito)
+      JSON.stringify(dataDeskripsiPangxito)
     );
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen p-6">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
-        Gambar Product
-      </h2>
-      <div className="flex justify-center mb-6">
-        <Image
-          src={selectedImageDeskripsiPangxito}
-          alt="Gambar"
-          width={250}
-          height={200}
-          className="rounded-lg shadow-lg"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Ubah Gambar:
-        </label>
-        <input
-          type="file"
-          onChange={handleImageChangeDeskripsiPangxito}
-          className="block w-full text-sm text-gray-900 border border-gray-300 rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-green-500"
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={dataDeskripsiPangxito.DeskripsiPangxito2.maintitle}
-          onChange={handleChangeDeskripsiPangxito(
-            "DeskripsiPangxito2",
-            "maintitle"
-          )}
-          className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-          placeholder="Masukkan Name Product baru"
-        />
-        <button
-          onClick={saveToLocalStorage}
-          className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition-colors text-sm"
-        >
-          UPDATE
-        </button>
+    <div className="bg-gray-50 min-h-screen p-8">
+      <h2 className="text-xl font-bold text-gray-900 mb-6">Data Produk</h2>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+        <div className="flex items-center justify-center">
+          <Image
+            src={selectedImageDeskripsiPangxito}
+            alt="Gambar Produk"
+            width={180}
+            height={180}
+            className="rounded-md border border-gray-300"
+          />
+        </div>
+
+        <div className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Nama Produk:
+            </label>
+            <input
+              type="text"
+              value={dataDeskripsiPangxito.DeskripsiPangxito2.maintitle}
+              onChange={handleChangeDeskripsiPangxito(
+                "DeskripsiPangxito2",
+                "maintitle"
+              )}
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+              placeholder="Masukkan Judul baru"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Ubah Gambar:
+            </label>
+            <input
+              type="file"
+              onChange={handleImageChangeDeskripsiPangxito}
+              className="block w-full text-sm text-gray-600 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <button
+            onClick={saveToLocalStorage}
+            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+          >
+            Update
+          </button>
+        </div>
       </div>
 
-      <div className="bg-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 rounded-lg shadow-md">
+      {/* Product Details Section */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
         {/* Product 1 */}
-        <section className="bg-white p-4 rounded-lg shadow-md border border-gray-200 flex flex-col">
-          <h2 className="text-xl font-semibold text-gray-800 mb-3">
+        <div className="flex flex-col">
+          <h3 className="text-lg font-semibold text-gray-800 mb-2">
             Product 1
-          </h2>
+          </h3>
           <input
             type="text"
             value={dataDeskripsiPangxito.DeskripsiPangxito3.title1}
@@ -124,7 +134,7 @@ export default function DeskripsiPangxito() {
               "DeskripsiPangxito3",
               "title1"
             )}
-            className="w-full p-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full p-3 mb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Masukkan Judul baru"
           />
           <input
@@ -134,29 +144,30 @@ export default function DeskripsiPangxito() {
               "DeskripsiPangxito3",
               "description1"
             )}
-            className="w-full p-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full p-3 mb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Masukkan Deskripsi baru"
           />
           <button
             onClick={saveToLocalStorage}
-            className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition duration-200"
+            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
           >
             UPDATE
           </button>
-        </section>
+        </div>
 
         {/* Product 2 */}
-        <section className="bg-white p-4 rounded-lg shadow-md border border-gray-200 flex flex-col">
-          <h2 className="text-xl font-semibold text-gray-800 mb-3">
+        <div className="flex flex-col">
+          <h3 className="text-lg font-semibold text-gray-800 mb-2">
             Product 2
-          </h2>
+          </h3>
           <input
+            type="text"
             value={dataDeskripsiPangxito.DeskripsiPangxito4.title2}
             onChange={handleChangeDeskripsiPangxito(
               "DeskripsiPangxito4",
               "title2"
             )}
-            className="w-full p-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full p-3 mb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Masukkan Judul baru"
           />
           <input
@@ -166,22 +177,22 @@ export default function DeskripsiPangxito() {
               "DeskripsiPangxito4",
               "description2"
             )}
-            className="w-full p-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full p-3 mb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Masukkan Deskripsi baru"
           />
           <button
             onClick={saveToLocalStorage}
-            className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition duration-200"
+            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
           >
             UPDATE
           </button>
-        </section>
+        </div>
 
         {/* Product 3 */}
-        <section className="bg-white p-4 rounded-lg shadow-md border border-gray-200 flex flex-col">
-          <h2 className="text-xl font-semibold text-gray-800 mb-3">
+        <div className="flex flex-col">
+          <h3 className="text-lg font-semibold text-gray-800 mb-2">
             Product 3
-          </h2>
+          </h3>
           <input
             type="text"
             value={dataDeskripsiPangxito.DeskripsiPangxito5.title3}
@@ -189,7 +200,7 @@ export default function DeskripsiPangxito() {
               "DeskripsiPangxito5",
               "title3"
             )}
-            className="w-full p-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full p-3 mb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Masukkan Judul baru"
           />
           <input
@@ -199,17 +210,19 @@ export default function DeskripsiPangxito() {
               "DeskripsiPangxito5",
               "description3"
             )}
-            className="w-full p-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full p-3 mb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Masukkan Deskripsi baru"
           />
           <button
             onClick={saveToLocalStorage}
-            className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition duration-200"
+            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
           >
             UPDATE
           </button>
-        </section>
+        </div>
       </div>
+
+      {/* Additional Product Section */}
       <div>
         <input
           type="text"
@@ -218,15 +231,9 @@ export default function DeskripsiPangxito() {
             "DeskripsiPangxito6",
             "description4"
           )}
-          className="w-full mt-6 p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-          placeholder="Masukkan Name Product baru"
+          className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Masukkan Deskripsi tambahan"
         />
-        <button
-          onClick={saveToLocalStorage}
-          className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition-colors text-sm"
-        >
-          UPDATE
-        </button>
       </div>
     </div>
   );
